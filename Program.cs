@@ -81,3 +81,64 @@ for(int j = 0; j < array1.GetLength(1); j++)
 System.Console.WriteLine("Трансформированный массив");
 System.Console.WriteLine(); // Пустая строка 
 PrintArray1(); // выводим массив с замененными строками
+
+
+
+
+
+// Задача 3: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+System.Console.WriteLine("Решаем задачу №3");
+System.Console.WriteLine();
+int[,] array2 = new int[3,4]; // задаем размерность массива
+
+void CreateArray2() // записываем функцию создания массива
+{
+    for (int i = 0; i < array2.GetLength(0); i++) // цикл 1: заполнение строк массива циклом 2
+    {
+        for (int j = 0; j < array2.GetLength(1); j++) // цикл 2: заполнение значений в строках
+        {
+            array2[i,j] = new Random().Next(1,10); // значения элементов определяются случайным образом генератором в диапазоне 1-9
+        }
+    }
+}
+void PrintArray2()
+{
+    for (int i = 0; i < array2.GetLength(0); i++)
+    {
+        for (int j = 0; j < array2.GetLength(1); j++)
+        {
+
+            System.Console.Write(array2[i,j] + " ");
+        }
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
+CreateArray2(); // запускаем функцию создания массива (создаем массив)
+
+System.Console.WriteLine("Исходный массив ");
+System.Console.WriteLine();
+PrintArray2(); // запускаем функцию вывода массива
+// int i=0;
+int minSum = 40; // задаем максимально возможную сумму элементов строки
+int MinSumStringNum = 0;
+void SumString ()
+{for(int i = 0; i < array2.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < array2.GetLength(1); j++)
+            {
+                sum += array2[i,j];              
+            }
+        if (minSum>sum)
+            {
+                minSum = sum;
+                MinSumStringNum = i;
+            }
+    }
+}
+SumString();
+System.Console.WriteLine("Минимальная сумма элементов строки массива: " + minSum);
+System.Console.WriteLine();
+System.Console.WriteLine("Строка с минимальной суммой элементов - строка с индексом: " + MinSumStringNum);
