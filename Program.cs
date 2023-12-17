@@ -67,7 +67,17 @@ CreateArray1(); // запускаем функцию создания масси
 System.Console.WriteLine("Исходный массив ");
 System.Console.WriteLine();
 PrintArray1(); // запускаем функцию вывода массива
+
 for(int j = 0; j < array1.GetLength(1); j++)
-{
-    array1[0,j]
-}
+    {
+        int temp1=0; // задаем временные переменные хранения элементов массива
+        int temp2=0; // задаем временные переменные хранения элементов массива
+        temp1=array1[0,j]; // записываем элемент строки 0
+        temp2=array1[array1.GetLength(0)-1 , j]; // записываем элемент последней строки
+        // System.Console.WriteLine(temp1 + "   "+ temp2);
+        array1[0,j]=temp2; // производим замену элемента строки 0 на элемент последней строки
+        array1[array1.GetLength(0)-1 , j]=temp1; // производим замену элемента последней строки на элемент строки 0
+    }
+System.Console.WriteLine("Трансформированный массив");
+System.Console.WriteLine(); // Пустая строка 
+PrintArray1(); // выводим массив с замененными строками
